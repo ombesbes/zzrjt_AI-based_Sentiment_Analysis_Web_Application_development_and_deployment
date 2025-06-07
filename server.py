@@ -27,9 +27,11 @@ def sent_analyzer():
     # Extract the label and score from the response
     label = response['label']
     score = response['score']
-
+    if label is None or score is None:
+        return "Invalid input ! Try again."
     # Return a formatted string with the sentiment label and score
-    return "The given text has been identified as {} with a score of {}.".format(label.split('_')[1], score)
+    else:
+        return "The given text has been identified as {} with a score of {}.".format(label.split('_')[1], score)
     # TODO
 
 @app.route("/")
